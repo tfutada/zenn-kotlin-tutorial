@@ -7,10 +7,15 @@ import org.springframework.context.annotation.Bean
 
 @SpringBootApplication
 class MytutorialApplication {
-	@Bean
 	fun commandLineRunner(): CommandLineRunner {
 		return CommandLineRunner {
 			println("Hello, World!")
+		}
+	}
+	@Bean
+	fun hiCommandLineRunner(): CommandLineRunner {
+		return CommandLineRunner {
+			println("Hi")
 		}
 	}
 }
