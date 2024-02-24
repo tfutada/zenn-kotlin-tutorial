@@ -7,19 +7,22 @@ import org.springframework.context.annotation.Bean
 
 @SpringBootApplication
 class MytutorialApplication {
-	fun commandLineRunner(): CommandLineRunner {
-		return CommandLineRunner {
-			println("Hello, World!")
-		}
-	}
-	@Bean
-	fun hiCommandLineRunner(): CommandLineRunner {
-		return CommandLineRunner {
-			println("Hi")
-		}
-	}
+    @Bean
+    fun hiCommandLineRunner(): CommandLineRunner {
+        return CommandLineRunner {
+            // Correctly passing a lambda that takes a String parameter
+            hello("ハロー") { hi ->
+                println(hi)
+            }
+        }
+    }
 }
 
+fun hello(h: String, cmd: (String) -> Unit) {
+    cmd(h)
+}
+
+
 fun main(args: Array<String>) {
-	runApplication<MytutorialApplication>(*args)
+    runApplication<MytutorialApplication>(*args)
 }
